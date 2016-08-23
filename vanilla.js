@@ -1,5 +1,4 @@
 var ExpandingList = function () {
-
   this.addNewField = function () {
     // Don't add a field if an empty field exists
     if (this.hasEmptyField()) {
@@ -25,7 +24,7 @@ var ExpandingList = function () {
     }
   }
 
-  this.cloneGroup = function (template, node) {
+  this.cloneGroup = function (template) {
     var newGroup = template.cloneNode(template)
     this.bindEvents(newGroup)
     this.clearInputValues(newGroup)
