@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Knockout</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=770" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
+  </head>
+
+  <body>
+    <form action="https://httpbin.org/post" method="post">
+      <div class="inputs" data-bind="foreach: items">
+        <div>
+          <label>Name</label>
+          <input type="text" name="name" autofocus data-bind="value: name, event: { change: $parent.addField }" />
+        </div>
+      </div>
+
+      <div>
+        <button>Save</button>
+      </div>
+    </form>
+
+    <script src="knockout.js"></script>
+  </body>
+</html>
