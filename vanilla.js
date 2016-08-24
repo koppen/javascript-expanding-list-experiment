@@ -1,6 +1,4 @@
 var ExpandingList = function (listNode) {
-  this.listNode = listNode
-
   this.addNewField = function () {
     // Don't add a field if an empty field exists
     if (this.hasEmptyField()) {
@@ -16,6 +14,14 @@ var ExpandingList = function (listNode) {
   this.bindEvents = function (node) {
     var self = this
     node.onkeyup = function () { self.addNewField() }
+  }
+
+  this.bindEventsToInputFields = function () {
+    var inputFields = this.inputFields()
+    for (var i = inputFields.length - 1; i >= 0; i--) {
+      var field = inputFields[0]
+      this.bindEvents(field)
+    }
   }
 
   this.clearInputValues = function (node) {
@@ -51,15 +57,13 @@ var ExpandingList = function (listNode) {
     }
     return node.querySelectorAll('input[data-addempty]')
   }
+
+  this.listNode = listNode
+  this.bindEventsToInputFields()
 }
 
 document.addEventListener('DOMContentLoaded', function () {
   var expandingList = new ExpandingList(
     document.querySelector('.inputs')
   )
-  var inputFields = expandingList.inputFields()
-  for (var i = inputFields.length - 1; i >= 0; i--) {
-    var field = inputFields[0]
-    expandingList.bindEvents(field)
-  }
 })
