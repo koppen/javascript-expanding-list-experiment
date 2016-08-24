@@ -1,11 +1,13 @@
-var ExpandingList = function () {
+var ExpandingList = function (listNode) {
+  this.listNode = listNode
+
   this.addNewField = function () {
     // Don't add a field if an empty field exists
     if (this.hasEmptyField()) {
       return
     }
 
-    var template = document.querySelector('[data-template]')
+    var template = this.listNode.querySelector('[data-template]')
     var newGroup = this.cloneGroup(template)
     var parent = template.parentNode
     parent.appendChild(newGroup)
@@ -45,14 +47,16 @@ var ExpandingList = function () {
 
   this.inputFields = function (node) {
     if (!node) {
-      node = document
+      node = this.listNode
     }
     return node.querySelectorAll('input[data-addempty]')
   }
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  var expandingList = new ExpandingList()
+  var expandingList = new ExpandingList(
+    document.querySelector('.inputs')
+  )
   var inputFields = expandingList.inputFields()
   for (var i = inputFields.length - 1; i >= 0; i--) {
     var field = inputFields[0]
