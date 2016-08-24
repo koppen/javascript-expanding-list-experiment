@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Vue.js</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=770" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.js"></script>
+  </head>
+
+  <body>
+    <form action="https://httpbin.org/post" method="post" id="expandingList">
+      <div class="inputs" v-for="name in names" track-by="$index">
+        <div>
+          <label>Name</label>
+          <input type="text" name="name" autofocus v-model="name" v-on:keyup="addBlankName" />
+        </div>
+      </div>
+
+      <div>
+        <button>Save</button>
+      </div>
+    </form>
+
+    <script src="vue.js"></script>
+  </body>
+</html>
