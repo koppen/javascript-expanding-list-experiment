@@ -63,7 +63,6 @@ var ExpandingList = function (listNode) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  var expandingList = new ExpandingList(
-    document.querySelector('.inputs')
-  )
+  new ExpandingList(document.querySelector('.people-inputs'))
+  new ExpandingList(document.querySelector('.pizza-inputs'))
 })
