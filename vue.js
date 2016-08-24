@@ -1,8 +1,5 @@
-var ExpandingList = new Vue({
-  el: "#expandingList",
-  data: {
-    names: ['']
-  },
+var ExpandingList = Vue.extend({
+  data: function () { return { names: [''] } },
   methods: {
     addBlankName: function () {
       if (this.hasBlankName()) {
@@ -22,3 +19,6 @@ var ExpandingList = new Vue({
     }
   }
 })
+
+var list = new ExpandingList()
+list.$mount('#expandingList')
