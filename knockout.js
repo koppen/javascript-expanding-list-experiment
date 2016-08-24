@@ -27,6 +27,8 @@ var Names = function (items) {
   }
 }
 
-var names = new Names([])
-names.items.push(new Name())
-ko.applyBindings(names)
+var peopleNames = new Names([new Name()])
+ko.applyBindings(peopleNames, document.querySelector('.people-inputs'))
+
+var pizzaNames = new Names([new Name()])
+ko.applyBindings(pizzaNames, document.querySelector('.pizza-inputs'))
