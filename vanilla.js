@@ -1,6 +1,5 @@
 var ExpandingList = function (listNode) {
   this.addEmptyField = function () {
-    // Don't add a field if an empty field exists
     if (this.hasEmptyField()) {
       return
     }
@@ -41,6 +40,7 @@ var ExpandingList = function (listNode) {
 
   this.hasEmptyField = function () {
     var inputFields = this.inputFields()
+
     for (var i = inputFields.length - 1; i >= 0; i--) {
       var inputField = inputFields[i]
       if (inputField.value === '') {

@@ -16,6 +16,7 @@ var ExpandingList = function (items) {
 
   this.hasEmptyField = function () {
     var names = this.names()
+
     for (var i = names.length - 1; i >= 0; i--) {
       var name = names[i]
       if (name.name === '') {
