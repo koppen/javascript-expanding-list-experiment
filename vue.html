@@ -8,8 +8,17 @@
   </head>
 
   <body>
-    <form action="https://httpbin.org/post" method="post" id="expandingList">
-      <div class="inputs" v-for="name in names" track-by="$index">
+    <form action="https://httpbin.org/post" method="post">
+      <h1>People</h1>
+      <div class="people-inputs" v-for="name in names" track-by="$index">
+        <div>
+          <label>Name</label>
+          <input type="text" name="name" autofocus v-model="name" v-on:keyup="addBlankName" />
+        </div>
+      </div>
+
+      <h1>Pizzas</h1>
+      <div class="pizza-inputs" v-for="name in names" track-by="$index">
         <div>
           <label>Name</label>
           <input type="text" name="name" autofocus v-model="name" v-on:keyup="addBlankName" />

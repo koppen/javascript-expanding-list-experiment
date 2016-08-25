@@ -20,5 +20,8 @@ var ExpandingList = Vue.extend({
   }
 })
 
-var list = new ExpandingList()
-list.$mount('#expandingList')
+var people = new ExpandingList()
+people.$mount('.people-inputs')
+
+var pizzas = new ExpandingList()
+pizzas.$mount('.pizza-inputs')
