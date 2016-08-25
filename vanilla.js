@@ -1,5 +1,5 @@
 var ExpandingList = function (listNode) {
-  this.addNewField = function () {
+  this.addEmptyField = function () {
     // Don't add a field if an empty field exists
     if (this.hasEmptyField()) {
       return
@@ -13,7 +13,7 @@ var ExpandingList = function (listNode) {
 
   this.bindEvents = function (node) {
     var self = this
-    node.onkeyup = function () { self.addNewField() }
+    node.onkeyup = function () { self.addEmptyField() }
   }
 
   this.bindEventsToInputFields = function () {

@@ -2,23 +2,23 @@ var Name = function () {
   this.name = ''
 }
 
-var Names = function (items) {
+var ExpandingList = function (items) {
   var self = this
-  this.items = ko.observableArray(items)
+  this.names = ko.observableArray(items)
 
-  this.addField = function () {
+  this.addEmptyField = function () {
     if (self.hasEmptyField()) {
       return
     }
 
-    self.items.push(new Name())
+    self.names.push(new Name())
   }
 
   this.hasEmptyField = function () {
-    var items = this.items()
-    for (var i = items.length - 1; i >= 0; i--) {
-      var item = items[i]
-      if (item.name === '') {
+    var names = this.names()
+    for (var i = names.length - 1; i >= 0; i--) {
+      var name = names[i]
+      if (name.name === '') {
         return true
       }
     }
@@ -27,8 +27,8 @@ var Names = function (items) {
   }
 }
 
-var peopleNames = new Names([new Name()])
-ko.applyBindings(peopleNames, document.querySelector('.people-inputs'))
+var people = new ExpandingList([new Name()])
+ko.applyBindings(people, document.querySelector('.people-inputs'))
 
-var pizzaNames = new Names([new Name()])
-ko.applyBindings(pizzaNames, document.querySelector('.pizza-inputs'))
+var pizzas = new ExpandingList([new Name()])
+ko.applyBindings(pizzas, document.querySelector('.pizza-inputs'))

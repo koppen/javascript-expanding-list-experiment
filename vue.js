@@ -1,16 +1,18 @@
 var ExpandingList = Vue.extend({
   data: function () { return { names: [''] } },
   methods: {
-    addBlankName: function () {
-      if (this.hasBlankName()) {
+    addEmptyField: function () {
+      if (this.hasEmptyField()) {
         return
       }
+
       this.names.push('')
     },
 
-    hasBlankName: function () {
-      for (var i = this.names.length - 1; i >= 0; i--) {
-        var name = this.names[i]
+    hasEmptyField: function () {
+      var names = this.names
+      for (var i = names.length - 1; i >= 0; i--) {
+        var name = names[i]
         if (name === '') {
           return true
         }
