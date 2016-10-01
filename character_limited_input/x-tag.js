@@ -7,6 +7,7 @@ xtag.register('x-character-count', {
         xtag.addEvent(sourceInput, 'keyup', this.inputValueChanged.bind(this))
         this.xtag.sourceInput = sourceInput
         this.xtag.maxLength = sourceInput.getAttribute('maxlength')
+        sourceInput.removeAttribute('maxlength')
       }
     }
   },
@@ -24,20 +25,30 @@ xtag.register('x-character-count', {
   },
 
   methods: {
-    inputValueChanged: function () {
-      this.render()
+    applyClasses: function (element) {
+      if (this.charactersLeft() < 0) {
+        element.className = 'is-over-limit'
+      } else {
+        element.className = ''
+      }
     },
-    render: function () {
+    charactersLeft: function () {
       var valueLength = this.sourceLength()
       var counter = null
       var maxLength = this.xtag.maxLength
       if (maxLength) {
-        counter = maxLength - valueLength
+        return counter = maxLength - valueLength
       } else {
-        counter = valueLength
+        return counter = valueLength
       }
+    },
+    inputValueChanged: function () {
+      this.render()
+    },
+    render: function () {
       var output = this.xtag.output
-      output.innerHTML = counter;
+      output.innerHTML = this.charactersLeft();
+      this.applyClasses(output)
     },
     sourceLength: function () {
       var sourceInput = this.xtag.sourceInput

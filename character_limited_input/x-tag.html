@@ -9,7 +9,12 @@
   </head>
 
   <body>
-    <input type="text" maxlength="100" id="input">
+    <style>
+      .is-over-limit {
+        color: red;
+      }
+    </style>
+    <input type="text" maxlength="10" id="input">
     <x-character-count for="#input"></x-character-count>
   </body>
 </html>
